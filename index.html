@@ -1,0 +1,75 @@
+<!DOCTYPE html >
+
+<html>
+    <meta charset="UTF-8"/>
+    <script>
+        function computerPlay(){
+            let number = Math.floor(Math.random() * 3);
+            let hand;   
+            if (number == 0){
+                hand = 'rock';
+            }
+            else if (number == 1){
+                hand = 'paper';
+            }
+            else if (number == 2){
+                hand = 'scissors';
+            }
+            return hand;
+        }
+
+        function playRound(playerSelection, computerSelection){
+            playerSelection = playerSelection.toLowerCase();
+            let whoWins;
+            
+            if(playerSelection === 'rock' && computerSelection === 'paper'){
+                whoWins = "You lose!";
+            }else if(playerSelection === 'paper' && computerSelection === 'scissors'){
+                whoWins = "You lose!";
+            } else if(playerSelection === 'scissors' && computerSelection ==='rock'){
+                whoWins ="You lose!"
+            } else if(playerSelection === 'paper' && computerSelection === 'rock'){
+                whoWins= "You win!"
+            } else if(playerSelection === 'scissors' && computerSelection === 'paper'){
+                whoWins ="You win!";
+            } else if  (playerSelection === 'rock' && computerSelection === 'scissors'){
+                whoWins ="You win!";
+            } else {
+                whoWins ="Tie!";
+            }
+            return whoWins
+        }
+
+        function game(){
+            let userScore = 0;
+            let computerScore = 0;
+            let i = 0;
+            let winner;
+            let userInput;
+
+            console.log("Let's have a rock paper scissors battle!!!!! (best of 5)")
+            while (i < 5){
+                console.log("please enter your choice...");
+                userInput = window.prompt();
+                winner = playRound(userInput, computerPlay());
+                console.log(winner);
+                if (winner ==="You win!"){
+                    ++userScore;
+                } else if( winner === "You lose!"){
+                    ++computerScore;
+                }
+                ++i;
+            }
+
+            if (userScore > computerScore){
+                console.log("Congrats! You won the whole thing!")
+            } else if( userScore < computerScore){
+                console.log("You lost the battle! Better luck next time!");
+            }   else{
+                console.log("We tied! Refresh the page so we can do another battle!");
+            }
+        }
+
+
+    </script>
+</html>
